@@ -11,10 +11,10 @@ import { ArrowLeft, Clock, Check, X, Plus, ShoppingBag } from 'lucide-react-nati
 
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-// Tipagem para a stack de rotas (Pedidos sem parâmetros)
+
 type RootStackParamList = {
   Pedidos: undefined;
-  // outras rotas se tiver...
+  
 };
 
 type PedidosNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Pedidos'>;
@@ -188,7 +188,7 @@ const Pedidos = ({ navigation }: PedidosProps) => {
 
   const handleOrderPress = (order: Order) => {
     console.log('Order pressed:', order);
-    // aqui você pode navegar para detalhes do pedido se quiser
+    
   };
 
   const FilterTab = ({ label, value }: { label: string; value: 'all' | OrderStatusType }) => (
@@ -223,7 +223,7 @@ const Pedidos = ({ navigation }: PedidosProps) => {
           <Text style={styles.headerSubtitle}>Acompanhe seus pedidos recentes</Text>
         </View>
         
-        {/* Filter tabs */}
+        
         <ScrollView 
           horizontal 
           showsHorizontalScrollIndicator={false}
@@ -236,7 +236,7 @@ const Pedidos = ({ navigation }: PedidosProps) => {
         </ScrollView>
       </View>
 
-      {/* Orders list */}
+      
       <ScrollView 
         style={styles.ordersList}
         contentContainerStyle={
@@ -258,7 +258,7 @@ const Pedidos = ({ navigation }: PedidosProps) => {
         )}
       </ScrollView>
       
-      {/* Add order button */}
+      
       <TouchableOpacity style={styles.addButton}>
         <Plus size={28} color="white" />
       </TouchableOpacity>
@@ -267,7 +267,7 @@ const Pedidos = ({ navigation }: PedidosProps) => {
 };
 
 const styles = StyleSheet.create({
-  // ... (estilos iguais ao seu código original)
+  
   container: {
     flex: 1,
     backgroundColor: '#FCF5E5',

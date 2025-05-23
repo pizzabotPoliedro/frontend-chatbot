@@ -11,15 +11,15 @@ import { User, MessageSquare } from 'lucide-react-native';
 
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-// Defina os tipos das rotas do seu stack (ajuste conforme seu app)
+
 type RootStackParamList = {
   MenuUsuario: undefined;
   Pedidos: undefined;
   Cadastro: undefined;
-  // outras rotas que existirem no seu app
+  
 };
 
-// Tipagem da prop navigation para essa tela
+
 type MenuUsuarioNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'MenuUsuario'

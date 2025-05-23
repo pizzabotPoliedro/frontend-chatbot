@@ -14,6 +14,8 @@ import TelaChat from './src/screens/TelaChat';
 import ContaUsuario from './src/screens/ContaUsuario';
 import ContaRestaurante from './src/screens/ContaRestaurante';
 import Login from './src/screens/Login';
+import HorarioFuncionamento from './src/screens/HorarioDeFuncionamento';
+import Admin from './src/screens/Admin';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,9 +25,11 @@ export default function App() {
       <NavigationContainer>
         <StatusBar style="auto" />
         <Stack.Navigator
-          initialRouteName="Index" // ← agora Cadastro é a tela inicial
+          initialRouteName="CadastroRestaurante" 
           screenOptions={{ headerShown: false }}
         >
+          <Stack.Screen name="Admin" component={Admin} />
+          <Stack.Screen name="HorarioFuncionamento" component={HorarioFuncionamento} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="ContaRestaurante" component={ContaRestaurante} />
           <Stack.Screen name="ContaUsuario" component={ContaUsuario} />

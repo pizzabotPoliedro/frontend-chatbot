@@ -15,14 +15,14 @@ import { ArrowLeft } from 'lucide-react-native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
 
-// Defina os tipos das rotas do seu stack
+
 type RootStackParamList = {
   Home: undefined;
   Cadastro: undefined;
-  // outras telas que você tiver
+  
 };
 
-// Defina o tipo da prop navigation
+
 type CadastroScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Cadastro'
@@ -30,7 +30,7 @@ type CadastroScreenNavigationProp = NativeStackNavigationProp<
 
 type CadastroProps = {
   navigation: CadastroScreenNavigationProp;
-  route?: RouteProp<RootStackParamList, 'Cadastro'>; // se usar route
+  route?: RouteProp<RootStackParamList, 'Cadastro'>; 
 };
 
 const Cadastro: React.FC<any> = ({ navigation }) => {
@@ -51,7 +51,7 @@ const Cadastro: React.FC<any> = ({ navigation }) => {
       [field]: value
     });
     
-    // Clear error when typing
+    
     if (errors[field]) {
       setErrors({
         ...errors,
@@ -84,9 +84,7 @@ const Cadastro: React.FC<any> = ({ navigation }) => {
     }
     
     console.log('Formulário enviado:', formData);
-    // Aqui você adicionaria a lógica para enviar o formulário para seu backend
     
-    // Navega de volta à tela inicial após cadastro bem-sucedido
     navigation.navigate('Home');
   };
 

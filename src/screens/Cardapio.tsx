@@ -62,7 +62,7 @@ const Cardapio = () => {
       const newId = Date.now().toString();
       setMenuItems([...menuItems, { id: newId, ...newItem }]);
       
-      // Reset form
+      
       setNewItem({
         name: '',
         price: 0,
@@ -121,7 +121,7 @@ const Cardapio = () => {
         contentContainerStyle={styles.menuList}
       />
 
-      {/* Modal para adicionar novo item */}
+      
       <Modal
         visible={isAddModalVisible}
         transparent={true}
@@ -212,7 +212,7 @@ const Cardapio = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF8E1', // Light amber background
+    backgroundColor: '#FFF8E1', 
   },
   header: {
     flexDirection: 'row',
@@ -220,12 +220,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#FFDB58', // Amber
+    borderBottomColor: '#FFDB58', 
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#8B4513', // Dark brown
+    color: '#8B4513', 
   },
   menuList: {
     padding: 16,
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
   itemName: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#8B4513', // Dark brown
+    color: '#8B4513', 
     marginBottom: 4,
   },
   itemDescription: {
@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
   itemPrice: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#DAA520', // Golden brown
+    color: '#DAA520', 
   },
   deleteButton: {
     justifyContent: 'center',
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   modalContent: {
-    backgroundColor: '#FFF8E1', // Light amber background
+    backgroundColor: '#FFF8E1', 
     borderRadius: 16,
     padding: 24,
     shadowColor: '#000',
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#8B4513', // Dark brown
+    color: '#8B4513', 
     marginBottom: 20,
     textAlign: 'center',
   },
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 8,
     fontWeight: '600',
-    color: '#8B4513', // Dark brown
+    color: '#8B4513', 
   },
   input: {
     backgroundColor: 'white',
@@ -309,7 +309,7 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#FFDB58', // Amber
+    borderColor: '#FFDB58', 
   },
   modalButtonContainer: {
     flexDirection: 'row',
@@ -327,7 +327,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E0E0E0',
   },
   modalButtonSave: {
-    backgroundColor: '#DAA520', // Golden brown
+    backgroundColor: '#DAA520', 
   },
   modalButtonText: {
     fontWeight: 'bold',

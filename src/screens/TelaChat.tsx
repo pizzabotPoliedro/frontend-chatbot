@@ -13,11 +13,11 @@ import {
 } from 'react-native';
 import { ArrowLeft, Send, MessageCircle } from 'lucide-react-native';
 
-// Definindo o tipo para as mensagens
+
 interface Mensagem {
   id: string;
   texto: string;
-  enviada: boolean; // true = usuário, false = chatbot
+  enviada: boolean; 
   timestamp: Date;
 }
 
@@ -35,7 +35,7 @@ const TelaChat = ({ navigation }: { navigation: any }) => {
   const enviarMensagem = () => {
     if (mensagem.trim() === '') return;
     
-    // Adiciona a mensagem do usuário
+    
     const novaMensagemUsuario = {
       id: Date.now().toString(),
       texto: mensagem,
@@ -46,7 +46,7 @@ const TelaChat = ({ navigation }: { navigation: any }) => {
     setMensagens(prev => [...prev, novaMensagemUsuario]);
     setMensagem('');
     
-    // Simula resposta do chatbot após um pequeno delay
+    
     setTimeout(() => {
       const respostaBot = {
         id: (Date.now() + 1).toString(),
@@ -76,7 +76,7 @@ const TelaChat = ({ navigation }: { navigation: any }) => {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FCF5E5" />
       
-      {/* Cabeçalho */}
+      
       <View style={styles.cabecalho}>
         <TouchableOpacity 
           style={styles.botaoVoltar}
@@ -90,7 +90,7 @@ const TelaChat = ({ navigation }: { navigation: any }) => {
         </View>
       </View>
       
-      {/* Lista de mensagens */}
+     
       <FlatList
         style={styles.listaMensagens}
         data={mensagens}
@@ -100,7 +100,7 @@ const TelaChat = ({ navigation }: { navigation: any }) => {
         inverted={false}
       />
       
-      {/* Área de entrada de texto */}
+      
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.areaInput}
@@ -126,15 +126,15 @@ const TelaChat = ({ navigation }: { navigation: any }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FCF5E5', // Fundo amarelo/âmbar claro
+    backgroundColor: '#FCF5E5', 
   },
   cabecalho: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#FEF7CD', // Amarelo mais claro para o cabeçalho
+    backgroundColor: '#FEF7CD', 
     borderBottomWidth: 1,
-    borderBottomColor: '#F9A826', // Borda com tom âmbar
+    borderBottomColor: '#F9A826', 
   },
   botaoVoltar: {
     padding: 8,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: -40, // Compensa o botão voltar para centralizar
+    marginLeft: -40, 
   },
   iconeChat: {
     marginRight: 8,
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   textoTitulo: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#8A5A00', // Marrom dourado escuro
+    color: '#8A5A00', 
   },
   listaMensagens: {
     flex: 1,
@@ -174,12 +174,12 @@ const styles = StyleSheet.create({
   },
   mensagemEnviada: {
     alignSelf: 'flex-end',
-    backgroundColor: '#F9A826', // Cor âmbar para mensagens enviadas
+    backgroundColor: '#F9A826', 
     borderBottomRightRadius: 4,
   },
   mensagemRecebida: {
     alignSelf: 'flex-start',
-    backgroundColor: '#FEC6A1', // Cor mais suave para mensagens recebidas
+    backgroundColor: '#FEC6A1', 
     borderBottomLeftRadius: 4,
   },
   textoMensagem: {
@@ -195,9 +195,9 @@ const styles = StyleSheet.create({
   areaInput: {
     flexDirection: 'row',
     padding: 12,
-    backgroundColor: '#FEF7CD', // Amarelo claro
+    backgroundColor: '#FEF7CD', 
     borderTopWidth: 1,
-    borderTopColor: '#F9A826', // Borda com tom âmbar
+    borderTopColor: '#F9A826', 
     alignItems: 'center',
   },
   input: {
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   botaoEnviar: {
-    backgroundColor: '#8A5A00', // Marrom dourado escuro
+    backgroundColor: '#8A5A00', 
     width: 40,
     height: 40,
     borderRadius: 20,

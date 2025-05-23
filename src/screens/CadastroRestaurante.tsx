@@ -11,29 +11,19 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft } from 'lucide-react-native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { RouteProp } from '@react-navigation/native';
 
-// Defina os tipos das rotas do seu stack
 type RootStackParamList = {
-  CadastroRestaurante: undefined;
-  // outras telas que você tiver
+  RestaurantRegister: undefined;
+  Login: undefined;
 };
 
-// Defina o tipo da prop navigation
-type CadastroScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'CadastroRestaurante'
->;
+const CardapioRestaurante = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
-type CadastroProps = {
-  navigation: CadastroScreenNavigationProp;
-  route?: RouteProp<RootStackParamList, 'CadastroRestaurante'>; // se usar route
-};
-
-const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
   const [formData, setFormData] = useState({
+    nomeRestaurante: '',
     nome: '',
     sobrenome: '',
     email: '',
@@ -49,8 +39,7 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
       ...formData,
       [field]: value
     });
-    
-    // Clear error when typing
+
     if (errors[field]) {
       setErrors({
         ...errors,
@@ -61,7 +50,8 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
 
   const validate = (): { [key: string]: string } => {
     const newErrors: { [key: string]: string } = {};
-    
+
+    if (!formData.nomeRestaurante) newErrors.nomeRestaurante = 'Nome do restaurante é obrigatório';
     if (!formData.nome) newErrors.nome = 'Nome é obrigatório';
     if (!formData.sobrenome) newErrors.sobrenome = 'Sobrenome é obrigatório';
     if (!formData.email) newErrors.email = 'E-mail é obrigatório';
@@ -76,26 +66,19 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
 
   const handleSubmit = () => {
     const formErrors = validate();
-    
+
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
       return;
     }
-    
+
     console.log('Formulário enviado:', formData);
-    // Aqui você adicionaria a lógica para enviar o formulário para seu backend
-    
-    // Navega de volta à tela inicial após cadastro bem-sucedido
-    navigation.navigate('Home');
+    navigation.goBack();
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <TouchableOpacity 
-        style={styles.backButton} 
-        onPress={() => navigation.goBack()}
-      >
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
         <ArrowLeft size={24} color="#8A5A00" />
         <Text style={styles.backText}>Voltar</Text>
       </TouchableOpacity>
@@ -110,8 +93,19 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
               <Text style={styles.title}>Faça seu</Text>
               <Text style={styles.subtitle}>cadastro como restaurante</Text>
             </View>
-            
+
             <View style={styles.form}>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={[styles.input, errors.nomeRestaurante && styles.inputError]}
+                  placeholder="Nome do Restaurante"
+                  placeholderTextColor="#8A5A00"
+                  value={formData.nomeRestaurante}
+                  onChangeText={(text) => handleChange('nomeRestaurante', text)}
+                />
+                {errors.nomeRestaurante && <Text style={styles.errorText}>{errors.nomeRestaurante}</Text>}
+              </View>
+
               <View style={styles.inputRow}>
                 <View style={styles.inputContainer}>
                   <TextInput
@@ -123,7 +117,7 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
                   />
                   {errors.nome && <Text style={styles.errorText}>{errors.nome}</Text>}
                 </View>
-                
+
                 <View style={styles.inputContainer}>
                   <TextInput
                     style={[styles.input, errors.sobrenome && styles.inputError]}
@@ -135,7 +129,7 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
                   {errors.sobrenome && <Text style={styles.errorText}>{errors.sobrenome}</Text>}
                 </View>
               </View>
-              
+
               <View style={styles.inputRow}>
                 <View style={styles.inputContainer}>
                   <TextInput
@@ -149,7 +143,7 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
                   />
                   {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
                 </View>
-                
+
                 <View style={styles.inputContainer}>
                   <TextInput
                     style={[styles.input, errors.telefone && styles.inputError]}
@@ -162,7 +156,7 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
                   {errors.telefone && <Text style={styles.errorText}>{errors.telefone}</Text>}
                 </View>
               </View>
-              
+
               <View style={styles.inputRow}>
                 <View style={styles.inputContainer}>
                   <TextInput
@@ -175,7 +169,7 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
                   />
                   {errors.senha && <Text style={styles.errorText}>{errors.senha}</Text>}
                 </View>
-                
+
                 <View style={styles.inputContainer}>
                   <TextInput
                     style={[styles.input, errors.confirmarSenha && styles.inputError]}
@@ -188,17 +182,14 @@ const CadastroRestaurante: React.FC<any> = ({ navigation }) => {
                   {errors.confirmarSenha && <Text style={styles.errorText}>{errors.confirmarSenha}</Text>}
                 </View>
               </View>
-              
-              <TouchableOpacity 
-                style={styles.submitButton}
-                onPress={handleSubmit}
-              >
+
+              <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                 <Text style={styles.submitButtonText}>Cadastrar</Text>
               </TouchableOpacity>
-              
+
               <View style={styles.loginContainer}>
                 <Text style={styles.loginText}>Já é cadastrado? </Text>
-                <TouchableOpacity onPress={() => console.log('Login pressed')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                   <Text style={styles.loginLink}>Faça seu login</Text>
                 </TouchableOpacity>
               </View>
@@ -243,7 +234,6 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 18,
     color: '#8A5A00',
-    
   },
   form: {
     backgroundColor: '#F9A826',
@@ -302,4 +292,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CadastroRestaurante;
+export default CardapioRestaurante;
+
+

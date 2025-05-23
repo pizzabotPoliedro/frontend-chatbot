@@ -9,10 +9,10 @@ import {
 import { AntDesign } from '@expo/vector-icons';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-// Defina suas rotas aqui (ajuste conforme seu app)
+
 type RootStackParamList = {
   ContaUsuario: undefined;
-  // outras rotas possíveis
+  
 };
 
 type ContaUsuarioNavigationProp = NativeStackNavigationProp<
@@ -28,7 +28,7 @@ const ContaUsuario: React.FC<Props> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        {/* Botão de voltar */}
+        
         <TouchableOpacity 
           style={styles.backButton}
           onPress={() => navigation.goBack()}
@@ -37,20 +37,20 @@ const ContaUsuario: React.FC<Props> = ({ navigation }) => {
           <Text style={styles.backText}>Voltar</Text>
         </TouchableOpacity>
         
-        {/* Saudação */}
+        
         <View style={styles.greeting}>
           <Text style={styles.greetingSubtext}>Olá,</Text>
           <Text style={styles.greetingName}>José Alves</Text>
         </View>
         
-        {/* Avatar */}
+        
         <View style={styles.avatarContainer}>
           <View style={styles.avatar}>
             <Text style={styles.avatarText}>JA</Text>
           </View>
         </View>
         
-        {/* Cartão com dados */}
+        
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Dados</Text>
           <View style={styles.divider} />
@@ -67,7 +67,7 @@ const ContaUsuario: React.FC<Props> = ({ navigation }) => {
         </View>
       </View>
       
-      {/* Rodapé */}
+      
       <View style={styles.footer}>
         <Text style={styles.footerText}>© 2025 - Todos os direitos reservados</Text>
       </View>

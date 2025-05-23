@@ -7,7 +7,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const Index = () => {
   const navigation = useNavigation<any>();
 
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
@@ -19,7 +18,7 @@ const Index = () => {
         <View style={styles.cardsContainer}>
           <TouchableOpacity 
             style={styles.card} 
-            onPress={() => navigation.navigate('Cardapio')}
+            onPress={() => navigation.navigate('Menu')}
           >
             <View style={styles.iconContainer}>
               <MaterialIcons name="menu-book" size={32} color="white" />
@@ -37,6 +36,14 @@ const Index = () => {
             <Text style={styles.cardTitle}>Pedidos</Text>
           </TouchableOpacity>
         </View>
+
+        <TouchableOpacity 
+          style={styles.smallButton} 
+          onPress={() => navigation.navigate('BusinessHours')}
+        >
+          <MaterialIcons name="access-time" size={20} color="#8A5A00" />
+          <Text style={styles.smallButtonText}>Horários de Funcionamento</Text>
+        </TouchableOpacity>
       </View>
       
       <View style={styles.footer}>
@@ -49,7 +56,7 @@ const Index = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FCF5E5', // Fundo claro na tonalidade amarelo/âmbar
+    backgroundColor: '#FCF5E5',
   },
   content: {
     flex: 1,
@@ -64,34 +71,34 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#8A5A00', // Marrom dourado escuro
+    color: '#8A5A00',
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 24,
-    color: '#B87A00', // Marrom dourado médio
+    color: '#B87A00',
   },
- cardsContainer: {
-  flexDirection: 'row',
-  justifyContent: 'center', // centraliza os cards juntos
-  marginTop: 20,
-  paddingHorizontal: 10,
-},
-card: {
-  backgroundColor: '#F9A826',
-  width: 150,
-  height: 150,
-  borderRadius: 20,
-  padding: 20,
-  alignItems: 'center',
-  justifyContent: 'center',
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.25,
-  shadowRadius: 3.84,
-  elevation: 5,
-  marginHorizontal: 10, // margem horizontal para espaçar os cards
-},
+  cardsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 20,
+    paddingHorizontal: 10,
+  },
+  card: {
+    backgroundColor: '#F9A826',
+    width: 150,
+    height: 150,
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    marginHorizontal: 10,
+  },
   iconContainer: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     padding: 12,
@@ -105,12 +112,32 @@ card: {
     fontSize: 18,
     fontWeight: '600',
   },
+  smallButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F9D71C',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderRadius: 25,
+    marginTop: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 2,
+    elevation: 3,
+  },
+  smallButtonText: {
+    color: '#8A5A00',
+    fontSize: 16,
+    fontWeight: '600',
+    marginLeft: 8,
+  },
   footer: {
     padding: 16,
     alignItems: 'center',
   },
   footerText: {
-    color: '#B87A00', // Marrom dourado médio
+    color: '#B87A00',
     fontSize: 14,
   },
 });
